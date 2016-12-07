@@ -1,1 +1,44 @@
-# Test
+from tkinter import *
+import dice
+
+class DiceRoll(Frame):
+    """Dice rolling simulation program."""
+    
+    def __init__(self):
+
+        Frame.__init__(self)
+        self.pack(expand = YES, fill = BOTH)
+        self.master.title("Dice Rolling Simulator")
+#### 
+        self.button1d6 = Button(self, text = "1d6", command = self.pressed1d6)
+        self.button1d6.grid(row = 0, column = 1)
+        
+        self.button1d6_2 = Button(self, text = "1d6", command = self.pressed1d6_2)
+        self.button1d6_2.grid(row = 1, column = 1)
+        
+        
+        self.result = StringVar()
+        self.resultLine = Label(self, textvariable = self.result)
+        self.result.set("Click to roll dice")
+        self.resultLine.grid(row = 0, column = 2)
+####
+        self.result2 = StringVar()
+        self.resultLine2 = Label(self, textvariable = self.result2)
+        self.result2.set("Click to roll dice")
+        self.resultLine2.grid(row = 1, column = 2)
+####
+    def pressed1d6(self):
+        """Roll one 6-sided die."""
+        
+        self.result.set(dice.roll('1d6'))
+        
+    def pressed1d6_2(self):
+        """Roll one 6-sided die."""
+        
+        self.result2.set(dice.roll('1d6'))
+        
+def main():
+    DiceRoll().mainloop()
+    
+if __name__ == "__main__":
+    main()
